@@ -1,3 +1,5 @@
+//Time Complexity O(n log n)
+//Space Complexity O(n)
 #include<bits/stdc++.h>
 using namespacestd;
 // in this the actuall sorting will take place form one element to half element to full element in an vector
