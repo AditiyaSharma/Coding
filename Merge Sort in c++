@@ -1,0 +1,62 @@
+#include<bits/stdc++.h>
+using namespacestd;
+// in this the actuall sorting will take place form one element to half element to full element in an vector
+void merge(vector<int>&arr[], int l, int m, int r)
+    {
+        vector<int>t;
+        int low=l,high=m+1;
+        // here it will check the element and insert in a new vector in increasing order.
+        while(low<=m and high<=r)
+        {
+            if(arr[low]<=arr[high])
+            {
+                t.emplace_back(arr[low]);
+                low++;
+            }
+            else{
+                t.emplace_back(arr[high]);
+                high++;
+            }
+        }
+        // if the some element in left when it divide by 2 then it eill cover over here
+        while(low<=m)
+        {
+            t.emplace_back(arr[low]);
+            low++;
+        }
+        // if the some element in left when it divide by 2 then it eill cover over here
+        while(high<=r)
+        {
+            t.emplace_back(arr[high]);
+            high++;
+        }
+        int k=0;
+        // here we get the insert the element accoring to ascending
+        for(int i=l;i<=r;i++)
+            arr[i]=t[k++];
+        return;
+    }
+    void mergeSort(vector<int>&arr, int l, int r)
+    {
+        // here we hypothetical creatring an array then check it with the help of index
+        if(l<r)
+        {
+            int m=(l+r)/2;
+            mergeSort(arr,l,m);
+            mergeSort(arr,m+1,r);
+            merge(arr,l,m,r);
+        }
+    }
+    int main(
+    {
+        int n;
+        cin>>n;
+        vector<int>arr(n);
+        for(int i=0;i<n;i++)
+            cin>>arr[i];
+        mergeSort(arr,0,n-1);
+        for(int i=0;i<n;i++)
+            cout<<a[i]<<" ";
+         return 0;
+    }
+      
